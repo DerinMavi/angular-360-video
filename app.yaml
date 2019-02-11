@@ -1,0 +1,49 @@
+# [START runtime]
+runtime: nodejs8
+
+handlers:
+  # Routing for bundles to serve directly
+  - url: /((?:runtime|main|polyfills|styles|vendor)\.[a-z0-9]+\.js)
+    secure: always
+    redirect_http_response_code: 301
+    static_files: dist/virtualtraveller/\1
+    upload: dist/virtualtraveller/.*
+
+  # Routing for bundle maps to serve directly
+  - url: /((?:runtime|main|polyfills|styles|vendor)\.[a-z0-9]+\.js\.map)
+    secure: always
+    redirect_http_response_code: 301
+    static_files: dist/virtualtraveller/\1
+    upload: dist/virtualtraveller/.*
+
+  # Routing for a prod styles.bundle.css to serve directly
+  - url: /(styles\.[a-z0-9]+\.css)
+    secure: always
+    redirect_http_response_code: 301
+    static_files: dist/virtualtraveller/\1
+    upload: dist/virtualtraveller/.*
+
+  # Routing for typedoc, assets, and favicon.ico to serve directly
+  - url: /((?:assets|docs)/.*|favicon\.ico)
+    secure: always
+    redirect_http_response_code: 301
+    static_files: dist/virtualtraveller/\1
+    upload: dist/virtualtraveller/.*
+
+  # Routing for service worker files serve directly
+  - url: /(manifest\.json|ngsw\.json|ngsw-worker\.js|safety-worker\.js|worker-basic\.min\.js|ngsw_worker\.es6\.js\.map)
+    secure: always
+    redirect_http_response_code: 301
+    static_files: dist/virtualtraveller/\1
+    upload: dist/virtualtraveller/.*
+
+  # Any other requests are routed to index.html for angular to handle so we don't need hash URLs
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    static_files: dist/virtualtraveller/index.html
+    upload: dist/virtualtraveller/index\.html
+    http_headers:
+      Strict-Transport-Security: max-age=31536000; includeSubDomains
+      X-Frame-Options: DENY
+# [END runtime]

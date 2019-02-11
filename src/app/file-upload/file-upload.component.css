@@ -1,0 +1,15 @@
+.file-upload {
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+mat-form-field {
+  width: 80%;
+}
+
+.file-upload > button {
+  margin-left: 5px;
+}
