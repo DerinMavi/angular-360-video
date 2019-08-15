@@ -9,7 +9,7 @@ I implemented two components `file-upload` to enter the video URL and `video-vie
 enabled only after a valid URL is entered. The video URL is passed as parameter to video view.
 
 ## Testing
-I uploaded my app to Google App Engine Standard environment. You can see it [here](https://caner-playground.appspot.com).
+I uploaded my app to Google App Engine Standard environment. ~~You can see it [here](https://caner-playground.appspot.com)~~.
 
 You can use these sample videos:
 
